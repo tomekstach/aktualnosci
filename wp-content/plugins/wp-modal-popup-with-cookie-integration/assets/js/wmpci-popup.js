@@ -273,7 +273,7 @@
 
       // check if there is a cookie or hash before proceeding
       // AstoSoft - check url sid param
-      if ((!util.hasCookie(settings.cookieName) && !uril.hasUrlParam('sid')) || util.hashExists(settings.forceHash)) {
+      if ((!util.hasCookie(settings.cookieName) && util.hasUrlParam('sid')) || util.hashExists(settings.forceHash)) {
         if (settings.delay === 0) {
           WmpciPop.open();
         } else {
