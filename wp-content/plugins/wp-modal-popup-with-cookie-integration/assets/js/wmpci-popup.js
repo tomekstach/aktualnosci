@@ -65,6 +65,16 @@
 
     util = {
 
+      // AstoSoft - start - check sid in url params
+      hasUrlParam: function(paramname) {
+        if (window.location.href.indexOf(paramname) > -1) {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      // AstoSoft - end
+
       hasClass: function(el, name) {
         return new RegExp('(\\s|^)' + name + '(\\s|$)').test(el.className);
       },
@@ -262,7 +272,8 @@
       util.mergeObj(settings, options);
 
       // check if there is a cookie or hash before proceeding
-      if (!util.hasCookie(settings.cookieName) || util.hashExists(settings.forceHash)) {
+      // AstoSoft - check url sid param
+      if ((!util.hasCookie(settings.cookieName) && util.hasUrlParam('sid')) || util.hashExists(settings.forceHash)) {
         if (settings.delay === 0) {
           WmpciPop.open();
         } else {
