@@ -103,7 +103,7 @@ function _tk_scripts()
   wp_enqueue_style('_tk-bootstrap', get_template_directory_uri() . '/includes/resources/bootstrap/css/bootstrap.min.css');
 
   // load _tk styles
-  wp_enqueue_style('_tk-style', get_template_directory_uri() . '/style_2.css', false, '20170211-4');
+  wp_enqueue_style('_tk-style', get_template_directory_uri() . '/style_2.css', false, '20210306-1');
 
   // load bootstrap wp js
   wp_enqueue_script('_tk-bootstrapwp', get_template_directory_uri() . '/includes/js/bootstrap-wp.js', array('jquery'));
