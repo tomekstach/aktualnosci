@@ -156,6 +156,7 @@ function print_grid_meta($key)
 }
 
 // AstoSoft - Start
-if (isset($_GET['srv'])) {
-  setcookie("sid", '999', strtotime('+365 days'));
+if (isset($_GET['srv']) && isset($_GET['prg'])) {
+  $prg = (int) $_GET['prg'];
+  setcookie('sid_' . $prg, '999', strtotime('+365 days'));
 }

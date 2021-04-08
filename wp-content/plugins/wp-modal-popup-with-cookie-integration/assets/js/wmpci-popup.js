@@ -25,7 +25,7 @@
       closeClassDefault: 'wmpci-close-go',
 
       // AstoSoft - change the cookie name
-      cookieName: 'sid',
+      cookieName: 'sid_',
 
       // on popup open function callback
       onPopUpOpen: null,
@@ -72,6 +72,15 @@
         } else {
           return false;
         }
+      },
+
+      getUrlVars: function() {
+        var vars = {};
+        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+          function(m, key, value) {
+            vars[key] = value;
+          });
+        return vars;
       },
       // AstoSoft - end
 
@@ -272,19 +281,22 @@
       util.mergeObj(settings, options);
 
       // check if there is a cookie or hash before proceeding
-      // AstoSoft - check url sid param
-      if ((!util.hasCookie(settings.cookieName) && util.hasUrlParam('sid')) || util.hashExists(settings.forceHash)) {
-        if (settings.delay === 0) {
-          WmpciPop.open();
-        } else {
-          // delay showing the popup
-          setTimeout(WmpciPop.open, settings.delay);
-        }
-        if (settings.hideAfter) {
-          // hide popup after the set amount of time
-          setTimeout(WmpciPop.close, settings.hideAfter + settings.delay);
+      // AstoSoft - Start - check url sid param
+      if (util.hasUrlParam('prg')) {
+        if ((!util.hasCookie(settings.cookieName + util.getUrlVars()['prg']) && util.hasUrlParam('sid')) || util.hashExists(settings.forceHash)) {
+          if (settings.delay === 0) {
+            WmpciPop.open();
+          } else {
+            // delay showing the popup
+            setTimeout(WmpciPop.open, settings.delay);
+          }
+          if (settings.hideAfter) {
+            // hide popup after the set amount of time
+            setTimeout(WmpciPop.close, settings.hideAfter + settings.delay);
+          }
         }
       }
+      // AstoSoft - End
     }
   };
 
