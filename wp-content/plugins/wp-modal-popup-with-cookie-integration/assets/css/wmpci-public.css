@@ -40,6 +40,7 @@
   right: 0;
   top: 0;
   z-index: 9999999;
+  text-align: center;
 }
 
 .wmpci-popup-wrp.splash {
@@ -48,16 +49,18 @@
 
 .wmpci-popup-body {
   background-color: #fff;
-  position: absolute;
-  right: 35%;
+  /*position: absolute;*/
+  position: relative;
   text-align: left;
+  /*right: 35%;
   top: 50%;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
-  max-width: 50%;
-  width: auto;
   margin: 0;
+  max-width: 50%;*/
+  margin: 10% auto;
+  width: auto;
 }
 
 .wmpci-popup-body p {
